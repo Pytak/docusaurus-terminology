@@ -98,8 +98,7 @@ async function parser(options) {
           process.exit(1);
         }
         const current_file_path = path.resolve(process.cwd(), filepath);
-        const relativePath =
-          getRelativePath(current_file_path, termReference.filepath, options);
+        const relativePath = `../glossary#${termReference.id}`;
         const component = `<Term popup="${termReference.hoverText}" ` +
           `reference="${relativePath}">${text}</Term>`;
         content = content.replace(match, component);

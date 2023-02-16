@@ -165,7 +165,7 @@ function getRelativePath(_, target, opts) {
   //const relative_url = path.relative(sourceDir, targetDir);
   const relative_url = path.relative(opts.termsDir, targetDir);
   const final_url = path.join(
-    opts.termsUrl, relative_url, target.substr(target.lastIndexOf("/")));
+    opts.termsUrl, relative_url, target.substr(target.lastIndexOf("/"))).replace(/\\(?!.*\\)/, "#");
   // construct the final url by appending the target's filename
   // if the relative url is empty, it means that the referenced
   // term is in the same dir, so add a `.`
@@ -174,7 +174,7 @@ function getRelativePath(_, target, opts) {
   //  : relative_url + target.substr(target.lastIndexOf("/"));
   //console.log(new_rel_url, new_final_url);
   //  remove .mdx suffix
-  return final_url.replace(/(\.mdx?)/g, "")
+  return `..${final_url.replace(/(\.mdx?)/g, "").replace("\\", "/")}`
 }
 
 module.exports = {

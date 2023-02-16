@@ -174,7 +174,7 @@ function getRelativePath(_, target, opts) {
   //  : relative_url + target.substr(target.lastIndexOf("/"));
   //console.log(new_rel_url, new_final_url);
   //  remove .mdx suffix
-  return `..${final_url.replace(/(\.mdx?)/g, "").replace("\\", "/")}`
+  return `.${final_url.replace(/(\.mdx?)/g, "").replace("\\", "/")}`
 }
 
 module.exports = {
